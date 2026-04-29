@@ -36,8 +36,6 @@ project/
 
 ## 📦 Installation
 
-#Clone the project
-```bash
 git clone https://github.com/your-username/ai-support-bot.git
 cd ai-support-bot
 
