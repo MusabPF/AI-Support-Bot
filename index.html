@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Customer Support Bot</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #0f172a;
+            margin: 0;
+            color: white;
+        }
+
+        .container {
+            width: 60%;
+            margin: auto;
+            margin-top: 40px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #chatbox {
+            height: 500px;
+            overflow-y: auto;
+            background: #1e293b;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .msg {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 10px;
+        }
+
+        .user {
+            background: #2563eb;
+            text-align: right;
+        }
+
+        .bot {
+            background: #334155;
+        }
+
+        .input-box {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+        }
+
+        button {
+            padding: 12px;
+            background: #22c55e;
+            border: none;
+            margin-left: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>AI Customer Support Bot</h1>
+
+    <div id="chatbox"></div>
+
+    <div class="input-box">
+        <input id="input" placeholder="Ask something..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+async function sendMessage() {
+    let input = document.getElementById("input");
+    let chatbox = document.getElementById("chatbox");
+
+    let userText = input.value.trim();
+    if (!userText) return;
+
+    chatbox.innerHTML += `<div class='msg user'>${userText}</div>`;
+    input.value = "";
+
+    let typing = document.createElement("div");
+    typing.className = "msg bot";
+    typing.innerHTML = "Typing...";
+    chatbox.appendChild(typing);
+
+    chatbox.scrollTop = chatbox.scrollHeight;
+
+    try {
+        let res = await fetch("http://127.0.0.1:8001/ask", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ query: userText })
+        });
+
+        if (!res.ok) {
+            throw new Error("Server error");
+        }
+
+        let data = await res.json();
+
+        typing.innerHTML = data.answer || "No response from bot";
+
+    } catch (err) {
+        typing.innerHTML = "⚠️ Error: Backend not reachable";
+        console.log(err);
+    }
+
+    chatbox.scrollTop = chatbox.scrollHeight;
+}
+</script>
+
+</body>
+</html>

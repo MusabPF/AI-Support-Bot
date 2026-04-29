@@ -1,0 +1,26 @@
+[
+  {
+    "question": "Why was I charged twice?",
+    "answer": "Double charges may occur due to payment gateway delays. It will be refunded automatically."
+  },
+  {
+    "question": "How can I update my payment method?",
+    "answer": "Go to account settings and update your billing information under payment methods."
+  },
+  {
+    "question": "How do I delete my account?",
+    "answer": "You can delete your account from settings or by contacting support."
+  },
+  {
+    "question": "What is your refund policy?",
+    "answer": "Refunds are processed within 5-7 business days after approval."
+  },
+  {
+    "question": "How long does support take to respond?",
+    "answer": "Our support team usually responds within 24 hours."
+  },
+  {
+  "question": "How do I reset my password?",
+  "answer": "You can reset your password by clicking on 'Forgot Password' on the login page. If you face issues, our support team is here to help."
+  }
+]
