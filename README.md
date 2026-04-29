@@ -39,28 +39,28 @@ project/
 git clone https://github.com/your-username/ai-support-bot.git
 cd ai-support-bot
 
-#Install dependencies
+#Install dependencies : 
 pip install fastapi uvicorn
 
-#Run the Backend
+#Run the Backend : 
 uvicorn main:app --reload --port 8001
 
-#Backend runs at:
+#Backend runs at : 
 http://127.0.0.1:8001
 
-#Run Frontend
-Open:
+#Run Frontend : 
+Open: 
 index.html
 
-#API Endpoint
+#API Endpoint : 
 #POST /ask
 
-Request:
+Request:  
 {
   "query": "How can I reset my password?"
 }
 
-Response:
+Response:  
 {
   "answer": "You can reset your password by clicking on 'Forgot Password' on the login page.",
   "type": "faq",
@@ -68,7 +68,7 @@ Response:
 }
 
 
-## 👨‍💻 Author
+## 👨‍💻 Author 
 This project was built as a learning project using FastAPI and vanilla JavaScript.
 
 Feel free to contribute or improve it.
