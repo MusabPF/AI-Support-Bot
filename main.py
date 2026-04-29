@@ -37,9 +37,7 @@ def find_best_match(user_query):
             best_match = faq
 
     return best_match, best_score
-
-
-# 🧠 NEW: handle greetings + small talk
+    
 def handle_small_talk(query):
     q = query.lower()
 
